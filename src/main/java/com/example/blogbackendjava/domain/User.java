@@ -1,9 +1,15 @@
 package com.example.blogbackendjava.domain;
 
-import com.example.blogbackendjava.dto.UserRequestDto;
+import com.example.blogbackendjava.dto.UserRequestDTO;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.*;
+
+import java.util.List;
 
 @Table(name="users")
 @Entity(name="users")
@@ -29,9 +35,14 @@ public class User {
     private String linkedin;
     private String twitter;
     private String instagram;
+    @JsonIgnore
+    @OneToMany(mappedBy = "users")
+    private List<Post> posts;
+    @OneToMany(mappedBy = "users")
+    private List<Comentario> comentarios;
     private Boolean active;
 
-    public User(UserRequestDto data){
+    public User(UserRequestDTO data){
         this.name = data.name();
         this.nickname = data.nickname();
         this.email = data.email();

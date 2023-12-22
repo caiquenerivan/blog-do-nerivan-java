@@ -1,7 +1,7 @@
 package com.example.blogbackendjava.controller;
 
 import com.example.blogbackendjava.domain.User;
-import com.example.blogbackendjava.dto.UserRequestDto;
+import com.example.blogbackendjava.dto.UserRequestDTO;
 import com.example.blogbackendjava.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -38,7 +37,7 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity registerUser(@RequestBody @Valid UserRequestDto data){
+    public ResponseEntity registerUser(@RequestBody @Valid UserRequestDTO data){
         User newUser = new User(data);
         userService.save(newUser);
         return ResponseEntity.ok().build();
@@ -46,7 +45,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     @Transactional
-    public ResponseEntity updateUser(@PathVariable String id, @RequestBody UserRequestDto data){
+    public ResponseEntity updateUser(@PathVariable String id, @RequestBody UserRequestDTO data){
         Optional<User> optionalUser = userService.findById(id);
         if (optionalUser.isPresent()){
             User user = optionalUser.get();
