@@ -5,6 +5,7 @@ import com.example.blogbackendjava.domain.UserType;
 public record UserRequestDTO(
         String id,
         String name,
+
         String nickname,
         String email,
         String password,

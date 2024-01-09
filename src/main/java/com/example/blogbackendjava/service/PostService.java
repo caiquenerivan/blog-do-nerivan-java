@@ -1,7 +1,6 @@
 package com.example.blogbackendjava.service;
 
 import com.example.blogbackendjava.domain.Post;
-import com.example.blogbackendjava.domain.User;
 
 import java.util.List;
 import java.util.Optional;

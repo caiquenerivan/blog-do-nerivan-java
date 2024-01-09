@@ -38,6 +38,7 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "users")
     private List<Post> posts;
+    @JsonIgnore
     @OneToMany(mappedBy = "users")
     private List<Comentario> comentarios;
     private Boolean active;
